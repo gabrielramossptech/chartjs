@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Implementando o ChartJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root{
+            --rosa: #ff6382;
+            --azul: #34a3eb;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .containerChart{
+            width: 40%;
+            height: auto;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div class="containerChart">
+      <canvas id="myChart1"></canvas>
+    </div>
+
+    <div class="containerChart">
+        <canvas id="myChart2"></canvas>
+      </div>
+  
+    </body>
+</html>
+
+<script>
+  const ctx = document.getElementById("myChart1");
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [30, 29, 28, 25, 22, 23],
+          borderWidth: 2,
+          borderColor: '#ff6382',
+          backgroundColor: '#ff6382',
+        },
+        {
+          label: "Umidade",
+          data: [80, 82, 80, 85, 80, 83],
+          borderWidth: 2,
+          borderColor: '#34a3eb',
+          backgroundColor: '#34a3eb',
+        }
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          min: 20,
+          max: 90
+        },
+      },
+    },
+  });
+
+  // Gráfico 2
+  const ctx2 = document.getElementById("myChart2");
+
+  new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+      datasets: [
+        {
+          label: "Temperatura média",
+          data: [22, 24, 27, 23, 20, 18],
+          borderWidth: 2,
+          borderColor: '#ff6382',
+          backgroundColor: '#ff6382',
+        },
+        {
+          label: "Umidade média",
+          data: [90, 89, 93, 87, 88, 82],
+          borderWidth: 2,
+          borderColor: '#34a3eb',
+          backgroundColor: '#34a3eb',
+        }
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+</script>
